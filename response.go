@@ -446,7 +446,7 @@ type TSTInfo struct {
 	Policy         asn1.ObjectIdentifier `json:"policy"`                           // Identifier for the policy. For many TSA's, often the same as SignedData.DigestAlgorithm
 	MessageImprint MessageImprint        `json:"message-imprint"`                  // MUST have the same value of MessageImprint in matching TimeStampReq
 	SerialNumber   *big.Int              `json:"serial-number"`                    // Time-Stamping users MUST be ready to accommodate integers up to 160 bits
-	GenTime        time.Time             `json:"gen-time"`                         // The time at which it was stamped
+	GenTime        time.Time             `json:"gen-time" asn1:"generalized"`                         // The time at which it was stamped
 	Accuracy       Accuracy              `json:"accuracy" asn1:"optional"`         // Accuracy represents the time deviation around the UTC time.
 	Ordering       bool                  `json:"ordering" asn1:"optional"`         // True if SerialNumber increases monotonically with time.
 	Nonce          *big.Int              `json:"nonce" asn1:"optional"`            // MUST be present if the similar field was present in TimeStampReq.  In that case it MUST have the same value.
